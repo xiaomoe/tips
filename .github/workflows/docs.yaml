@@ -1,0 +1,35 @@
+name: "Build Docs"
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-docs:
+    name: "Building docs"
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+        pdm-version: ["2.4.2"]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up PDM (with Python)
+        uses: pdm-project/setup-pdm@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+          version: ${{ matrix.pdm-version }}
+      - uses: actions/cache@v2
+        with:
+          key: ${{ github.ref }}
+          path: .cache
+      - name: Install dependencies
+        run: |
+          pdm sync -d -G doc
+      - name: Run Mkdocs
+        run: |
+          pdm run mkdocs gh-deploy --force
+        env:
+          REPO_KEY: ${{ secrets.GIT_ACTION_PUSH }}

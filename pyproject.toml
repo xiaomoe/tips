@@ -1,0 +1,63 @@
+[project]
+name = ""
+version = "0.0.1"
+description = "A series of tips to pay attention to during the development"
+authors = [{ name = "studyxiao", email = "studyxiao@163.com" }]
+dependencies = []
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+[tool.pdm.dev-dependencies]
+test = ["pytest>=7.2.1", "pytest-cov>=4.0.0"]
+dev = ["black>=22.12.0", "ruff>=0.0.241", "mypy>=0.991", "pre-commit>=3.0.4"]
+doc = [
+    "mkdocs>=1.4.2",
+    "mkdocs-material>=9.0.11",
+    "mkdocstrings[python]>=0.20.0",
+    "mdx-include>=1.4.2",
+    "jieba>=0.42.1",
+    "mkdocs-glightbox>=0.3.1",
+]
+
+[tool.black]
+line-length = 120
+# target-version = ["py311"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+select = [
+    "F", # pyflakes
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "A", # builtins shadow
+    "B", # flake8-bugbear
+    "C", # flake8-comprehensions
+    # "D",   # docstyle
+    "N", # naming
+    "I", # isort
+    # "S",   # bandit
+    "UP",  # upgrade
+    "SIM",
+    "RUF",
+    "PTH",
+    "ANN",
+]
+ignore = ['D211', 'D213']
+respect-gitignore = true
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.pydocstyle]
+# Use Google-style docstrings.
+convention = "google"
+
+[tool.ruff.flake8-builtins]
+builtins-ignorelist = ["id"]
+
+[tool.mypy]
+files = "."
+python_version = 3.11
+strict = true
