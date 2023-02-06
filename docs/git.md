@@ -149,6 +149,8 @@ git commit --amend --no-edit
 
 [How to change my Git username in terminal? ](https://stackoverflow.com/questions/22844806/how-to-change-my-git-username-in-terminal)
 
+[using-multiple-github-accounts-with-ssh-keys](https://gist.github.com/oanhnn/80a89405ab9023894df7)
+
 [Git 的奇技淫巧](https://hellogithub.com/article/9aed28d4d64b4649bb364685ef557ae4)
 
 [git-restore - 恢复工作树文件](https://git-scm.com/docs/git-restore/zh_HANS-CN)
