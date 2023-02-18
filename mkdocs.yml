@@ -24,8 +24,8 @@ theme:
     text: Open Sans
     code: Fira Code
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
+    # - navigation.tabs
+    # - navigation.tabs.sticky
     - navigation.top
     - toc.follow
     - search.suggest
@@ -45,11 +45,14 @@ plugins:
   - glightbox
 nav:
   - Tips: index.md
+  - Development:
+      # - Project Structure: structure.md
+      - Docker Service: docker.md
   - Workflow:
       - Code Qulity: code_quality.md
       - Documentation: docs.md
+      - Git: git.md
   - 环境变量: env.md
-  - Git: git.md
 
 markdown_extensions:
   - admonition

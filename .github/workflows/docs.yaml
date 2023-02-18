@@ -21,15 +21,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           version: ${{ matrix.pdm-version }}
-      # - uses: actions/cache@v2
-      #   with:
-      #     key: ${{ github.ref }}
-      #     path: .cache
       - name: Install dependencies
         run: |
           pdm sync -d -G doc
       - name: Run Mkdocs
         run: |
           pdm run mkdocs gh-deploy --force
-        # env:
-        #   REPO_KEY: ${{ secrets.GIT_ACTION_PUSH }}
+        env:
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
